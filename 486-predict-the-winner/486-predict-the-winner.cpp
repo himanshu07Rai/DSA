@@ -1,23 +1,30 @@
 class Solution {
 public:
     bool PredictTheWinner(vector<int>& nums) {
-vector<int> ret(nums);
-vector<int> sum={0};
-for(auto num:nums){
-sum.push_back(sum.back()+num);
-}
-for(int len=2;len<=nums.size();++len){
-for(int left=0;left+len-1<nums.size();++left){
-int right=left+len-1;
-if(left==right-1){
-ret[left]=max(ret[left],ret[right]);
-}else{
-int pickleft=nums[left]+sum[right+1]-sum[left+1]-ret[left+1];
-int pickright=nums[right]+sum[right]-sum[left]-ret[left];
-ret[left]=max(pickleft,pickright);
-}
-}
-}
-return ret[0]>=sum.back()/2+sum.back()%2;
-}
+        int n = nums.size();
+        if(n%2==0)return true;
+        vector<vector<int>>dp(n,vector<int>(n));
+        for(int g=0;g<n;g++)
+        {
+            for(int i=0,j=g;j<n;i++,j++){
+                if(!g)
+                    dp[i][j] = nums[i];
+                else if(g==1){
+                    dp[i][j] = max(nums[i],nums[j]);
+                }else{
+                    int v1 = nums[i]+min(dp[i+2][j],dp[i+1][j-1]);
+                    int v2 = nums[j]+min(dp[i+1][j-1],dp[i][j-2]);
+                    dp[i][j] = max(v1,v2);
+                }
+            }
+        }
+        
+        
+        
+        int sum = 0;
+        for(int i:nums)
+            sum+=i;
+        // cout<<dp[0][n-1];
+        return dp[0][n-1]*2>=sum;
+    }
 };
