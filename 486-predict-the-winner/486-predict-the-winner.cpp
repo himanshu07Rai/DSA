@@ -4,9 +4,11 @@ public:
         int n = nums.size();
         if(n%2==0)return true;
         vector<vector<int>>dp(n,vector<int>(n));
+        
         for(int g=0;g<n;g++)
         {
-            for(int i=0,j=g;j<n;i++,j++){
+            for(int i=0,j=g;j<n;i++,j++)
+            {
                 if(!g)
                     dp[i][j] = nums[i];
                 else if(g==1){
