@@ -9,9 +9,9 @@ public:
             int m = l+(r-l)/2;
             int val = nums[m];
             // cout<<val<<"\n";
-            if(val==target)
-                return m;
-            else if(val>=target)
+            // if(val==target)
+            //     return m;
+            if(val>=target)
             {
                 r=m;
             }
