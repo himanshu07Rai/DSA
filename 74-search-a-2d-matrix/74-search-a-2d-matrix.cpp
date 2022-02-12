@@ -7,10 +7,9 @@ public:
         {
             if(target==matrix[i][j])
                 return true;
-            else if(target > matrix[i][j])
+            else if(target>matrix[i][j])
                 i++;
-            else
-                j--;
+            else j--;
         }
         return false;
     }
