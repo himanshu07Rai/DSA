@@ -9,6 +9,7 @@ using namespace std;
 class Solution{
     struct Marks{
         int phy,chem,math;
+        Marks(int x,int y,int z):phy(x),chem(y),math(z){}
     };
     public:
     static bool comp(Marks *a,Marks *b)
@@ -25,10 +26,10 @@ class Solution{
         vector<Marks*> v;
         for(int i=0;i<N;i++)
         {
-            Marks *temp = new Marks();
-            temp->phy = phy[i];
-            temp->chem = chem[i];
-            temp->math = math[i];
+            Marks *temp = new Marks(phy[i],chem[i],math[i]);
+            // temp->phy = phy[i];
+            // temp->chem = chem[i];
+            // temp->math = math[i];
             v.push_back(temp);
         }
         sort(v.begin(),v.end(),comp);
