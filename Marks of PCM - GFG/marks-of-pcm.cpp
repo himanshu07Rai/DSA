@@ -11,30 +11,32 @@ class Solution{
         int phy,chem,math;
     };
     public:
-    static bool comp(Marks a,Marks b)
+    static bool comp(Marks *a,Marks *b)
     {
-        if(a.phy!=b.phy)
-            return a.phy<b.phy;
-        if(a.chem!=b.chem)
-            return a.chem>b.chem;
-        return a.math<b.math;
+        if(a->phy!=b->phy)
+            return a->phy<b->phy;
+        if(a->chem!=b->chem)
+            return a->chem>b->chem;
+        return a->math<b->math;
     }
     void customSort (int phy[], int chem[], int math[], int N)
     {
         // your code here
-        vector<Marks> v(N);
+        vector<Marks*> v;
         for(int i=0;i<N;i++)
         {
-            v[i].phy = phy[i];
-            v[i].chem = chem[i];
-            v[i].math = math[i];
+            Marks *temp = new Marks();
+            temp->phy = phy[i];
+            temp->chem = chem[i];
+            temp->math = math[i];
+            v.push_back(temp);
         }
         sort(v.begin(),v.end(),comp);
         for(int i=0;i<N;i++)
         {
-            phy[i] = v[i].phy ;
-            chem[i] = v[i].chem;
-            math[i] = v[i].math;
+            phy[i] = v[i]->phy ;
+            chem[i] = v[i]->chem;
+            math[i] = v[i]->math;
         }
         
     } 
