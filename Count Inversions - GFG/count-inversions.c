@@ -37,7 +37,6 @@ long long merge(long long A[],long long left,long long mid,long long right){
    return count;
 }
 long long merge_sort(long long A[],long long left,long long right){
-   long long count=0;
    if(right>left){
        long long mid = (left+right)/2;
        long long countLeft = merge_sort(A,left,mid);
@@ -46,7 +45,7 @@ long long merge_sort(long long A[],long long left,long long right){
        
        return myCount + countLeft + countRight;
    }
-   return count;
+   return 0;
 }
 long long int inversionCount(long long A[],long long n){
    long long ans = merge_sort(A,0,n-1);
