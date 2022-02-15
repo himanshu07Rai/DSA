@@ -10,7 +10,8 @@ public:
             {
                 Min = prices[i];
             }
-            profit = max(profit,prices[i]-Min);               
+            else if(prices[i]-Min>profit)
+                profit = prices[i]-Min;               
             
         }
         return profit;
