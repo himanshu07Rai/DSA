@@ -2,15 +2,15 @@ class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
         int n = nums.size();
-        int l=0,r=n-1,t=-1;
-        vector<int>ans;
+        int l=0,r=n-1;
+        vector<int>ans(2,-1);
         while(l<=r)
         {
             int m = l+(r-l)/2;
             int val = nums[m];
             if(val==target)
             {
-                t=m;
+                ans[0]=m;
                 r=m-1;
             }
                 
@@ -18,7 +18,6 @@ public:
                 r=m-1;
             else l=m+1;
         }
-        ans.push_back(t);
         
         l=0,r=n-1;
         while(l<=r)
@@ -27,14 +26,13 @@ public:
             int val = nums[m];
             if(val==target)
             {
-                t=m;
+                ans[1]=m;
                 l=m+1;
             }
             else if(val>target)
                 r=m-1;
             else l=m+1;
         }
-        ans.push_back(t);
         return ans;
         
     }
