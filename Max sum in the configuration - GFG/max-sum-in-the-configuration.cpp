@@ -38,7 +38,7 @@ int max_sum(int A[],int N)
         prevSum+=i*A[i];
     }
     int ans = prevSum;
-    for(int i=0;i<N;i++)
+    for(int i=0;i<N-1;i++)
     {
         int nextSum = prevSum+sum-N*A[N-1-i];
         ans = max(ans,nextSum);
