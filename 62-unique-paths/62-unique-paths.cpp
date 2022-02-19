@@ -15,14 +15,7 @@ public:
             return 1;
         vector<vector<int>> dp(m,vector<int>(n,-1));
         countPaths(0,0,m,n,dp);
-        // for(auto i:dp)
-        // {
-        //     for(int j:i)
-        //     {
-        //         cout<<j<<" ";
-        //     }
-        //     cout<<"\n";
-        // }
+
         return dp[0][0];
     }
 };
