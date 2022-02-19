@@ -13,23 +13,28 @@ public:
     int numDecodings(string s) {
         int n =s.size();
         if(n==0 || s[0]=='0') return 0;
-        int num=1,prev1=1,prev2=1;  
-        for(int i=1;i<n;++i)
+        if(n==1)return 1;
+        vector<int>dp(n,0);
+        dp[0] = 1;
+        if(ok(s[1]))
+            dp[1]=dp[0];
+        if(ok(s[0],s[1]))
+            dp[1]+=dp[0];  
+        for(int i=2;i<n;++i)
         {
             if(ok(s[i]))
             {
-                num=prev1;
-                if(ok(s[i-1], s[i])) num+=prev2;
+                dp[i]=dp[i-1];
+                if(ok(s[i-1], s[i])) dp[i]+=dp[i-2];
             }
-            else 
-            {
-                if(ok(s[i-1],s[i])) num=prev2;
-                else num=0;
-            }
-            prev2=prev1;
-            prev1=num;
+            
+            else if(ok(s[i-1],s[i]))
+                dp[i]=dp[i-2];
+            
+            else dp[i]=0;
+            
         }
-        return num;
+        return dp[n-1];
     }
 //     int help(int i, string &s,vector<int>&dp) {
 //         int n = s.size();
