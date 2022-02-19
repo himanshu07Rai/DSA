@@ -1,34 +1,36 @@
 class Solution {
 public:
-    int ok(char prev, char now)
+    
+    bool isValid(char now)
     {
-        if(prev=='1' || (prev=='2' && now<'7')) return 1;
-        return 0;
+        return now!='0';
     }
-    int ok(char now)
+    
+    bool isValid(char prev, char now)
     {
-        if(now!='0') return 1;
-        return 0;
+        if(prev=='1' || (prev=='2' && now<'7')) return true;
+        return false;
     }
+    
     int numDecodings(string s) {
         int n =s.size();
         if(n==0 || s[0]=='0') return 0;
         if(n==1)return 1;
         vector<int>dp(n,0);
         dp[0] = 1;
-        if(ok(s[1]))
+        if(isValid(s[1]))
             dp[1]=dp[0];
-        if(ok(s[0],s[1]))
+        if(isValid(s[0],s[1]))
             dp[1]+=dp[0];  
         for(int i=2;i<n;++i)
         {
-            if(ok(s[i]))
+            if(isValid(s[i]))
             {
                 dp[i]=dp[i-1];
-                if(ok(s[i-1], s[i])) dp[i]+=dp[i-2];
+                if(isValid(s[i-1], s[i])) dp[i]+=dp[i-2];
             }
             
-            else if(ok(s[i-1],s[i]))
+            else if(isValid(s[i-1],s[i]))
                 dp[i]=dp[i-2];
             
             else dp[i]=0;
