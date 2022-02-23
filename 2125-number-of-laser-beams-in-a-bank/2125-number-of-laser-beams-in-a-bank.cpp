@@ -12,9 +12,13 @@ public:
                 if(j=='1')
                     count++;
             }
-            ans+=count*prev;
-            if(count>0)
+            
+            if(count>0){
+                
+                ans+=count*prev;
                 prev = count;
+            }
+                
         }
         return ans;        
     }
