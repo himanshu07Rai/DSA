@@ -8,14 +8,14 @@ public:
         vector<int> cur = intervals[0];
         for(int i=1;i<n;i++)
         {
-            vector<int> interval = intervals[i];
-            if(cur[1]<interval[0])
+            vector<int> next = intervals[i];
+            if(cur[1]<next[0])
             {
                 ans.push_back(cur);
-                cur = interval;
+                cur = next;
             }
             else{
-                cur[1] = max(cur[1],interval[1]);   
+                cur[1] = max(cur[1],next[1]);   
             }
         }
         ans.push_back(cur);
