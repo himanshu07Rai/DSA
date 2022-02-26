@@ -13,12 +13,12 @@ public:
         sort(bt.begin(),bt.end(),comp);
         for(i=0;i<rows;i++)
         {
-            if(bt[i][0]<=truckSize){
+            if(truckSize && truckSize>=bt[i][0]){
                 count+=bt[i][1]*bt[i][0];
                 truckSize-=bt[i][0];
             }else break;
         }
-        if(i<rows)
+        if(i<rows && truckSize)
             count+=bt[i][1]*truckSize;
         return count;
     }
