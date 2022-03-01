@@ -14,12 +14,12 @@ public:
                 }                    
             }
         }
-        vector<vector<int>> dir = {
+        vector<vector<int>> dir({
             {0,-1},
             {-1,0},
             {0,1},
             {1,0}
-        };
+        });
         int min = 0;
         while(!q.empty())
         {
