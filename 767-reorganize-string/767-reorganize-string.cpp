@@ -9,7 +9,7 @@ public:
                 mostFreq = (c-'a');
         }
         
-        if(m[mostFreq]*2-1>s.length())
+        if(m[mostFreq]>(s.length()+1)/2)
             return "";
         
         int i = 0;
