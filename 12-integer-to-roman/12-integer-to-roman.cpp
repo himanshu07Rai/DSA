@@ -7,7 +7,7 @@ public:
             for(auto x : m){
                 if(n >= x.first){
                     ans += x.second;
-                    n = n - x.first;
+                    n -= x.first;
                     break;
                 }
             }
