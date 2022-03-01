@@ -24,8 +24,6 @@ public:
                 if(rowB[i[0]]==3 || colB[i[1]]==3 || d1B==3 || d2B==3)
                     return "B";
             }
-                // if(++row[id][i[0]]==3 || ++col[id][i[1]]==3 ||  i[0]==i[1] && ++d1[id]==3 || i[0]+i[1]==2 && ++d2[id]==3)
-                //     return id==0?"A":"B";
             id=!id;
         }
         return moves.size()==9?"Draw":"Pending";
