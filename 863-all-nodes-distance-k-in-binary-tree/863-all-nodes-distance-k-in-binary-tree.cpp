@@ -11,6 +11,20 @@ class Solution {
 public:
     void createGraph(TreeNode *root,unordered_map<int,vector<int>> &graph)
     {
+        if(!root)
+            return;
+        int val = root->val;
+        if(root->left){
+             graph[root->left->val].push_back(root->val);
+             graph[root->val].push_back(root->left->val);
+            createGraph(root->left,graph);
+        }
+        if(root->right){
+            graph[root->right->val].push_back(root->val);
+            graph[root->val].push_back(root->right->val);
+                     createGraph(root->right,graph);
+        }
+        /*
         queue<TreeNode*> q;
         q.push(root);
         while(!q.empty())
@@ -32,6 +46,7 @@ public:
                 }
             }
         }
+        */
     }
     vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
         if(!k)
