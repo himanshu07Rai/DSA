@@ -10,7 +10,8 @@ public:
             }
             int dig = x%10;
             x/=10;
-            res=res*10+dig;
+            res*=10;
+            res+=dig;
         }
         return res;
     }
