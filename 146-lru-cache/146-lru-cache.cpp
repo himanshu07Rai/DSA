@@ -1,36 +1,31 @@
 class LRUCache {
+ int capacity;
+    list<pair<int, int>> li;
+    unordered_map<int, list<pair<int, int>>::iterator> um; 
+
 public:
-    unordered_map<int,list<pair<int,int>>::iterator> mymap;
-    list<pair<int,int>> mylist;
-    int c = 0,cap;
-    LRUCache(int capacity) {
-        cap = capacity;
-    }
+    LRUCache(int capacity) : capacity{capacity} {}
     
     int get(int key) {
-        if(mymap.find(key)==mymap.end())
-            return -1;
-        mylist.splice(mylist.begin(),mylist,mymap[key]);
-        return mymap[key]->second;
+        if (um.find(key) == um.end()) return -1;
+        li.splice(li.begin(), li, um[key]);
+        return um[key]->second;
     }
     
     void put(int key, int value) {
-        if(get(key)!=-1)
-        {
-            mymap[key]->second = value;
-            mylist.splice(mylist.begin(),mylist,mymap[key]);
+        if (get(key) != -1) {
+            um[key]->second = value;
             return;
         }
-        if(c==cap)
-        {
-            int delKey = mylist.back().first;
-            mylist.pop_back();
-            mymap.erase(delKey);
-            c--;
+        
+        if (um.size() == capacity) {
+            int delKey = li.back().first;
+            li.pop_back();
+            um.erase(delKey);
         }
-        c++;
-        mylist.push_front({key,value});
-        mymap[key] = mylist.begin();
+        
+        li.emplace_front(key, value);
+        um[key] = li.begin();
     }
 };
 
