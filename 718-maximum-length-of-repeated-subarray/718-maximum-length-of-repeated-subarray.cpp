@@ -11,6 +11,8 @@ public:
                 if(nums1[i-1]==nums2[j-1])
                 {
                     dp[i][j] = dp[i-1][j-1]+1;
+                    // dp[i][j]+=dp[i-1][j-1];
+                    // dp[i][j]+=1;
                     ans = max(ans,dp[i][j]);
                 }
                     
