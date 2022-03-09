@@ -5,7 +5,7 @@ using namespace std;
 string printLCS(string X,string Y,int n,int m, vector<vector<int>> &dp)
 {
     if(n==0 || m==0)
-    return string("");
+    return "";
     if(X[n-1]==Y[m-1])
     {
         return printLCS(X,Y,n-1,m-1,dp)+X[n-1];
