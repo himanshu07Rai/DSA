@@ -23,12 +23,12 @@ public:
             temp = help(s,i,i);
             if(temp.size()>ans.length())
                 ans = temp;
-            // if(s[i]==s[i+1])
-            // {
+            if(s[i]==s[i+1])
+            {
                 temp = help(s,i,i+1);
                 if(temp.size()>ans.length())
                     ans = temp;
-            // }
+            }
                 
         }
         return ans;
