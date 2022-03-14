@@ -27,46 +27,39 @@ class Node{
 class Solution {
 public:
     Node* copyRandomList(Node* head) {
-        unordered_map<Node*,Node*>m;
-        Node* ans = new Node(0);
-        auto t = ans;
+        // unordered_map<Node*,Node*>m;
+        // Node* ans = new Node(0);
+        // auto t = ans;
+        Node* temp = head;
+        while(temp)
+        {
+            Node *copy = new Node(temp->val); 
+            copy->next = temp->next;
+            temp->next = copy;  
+            temp = copy->next;
+        }
+        temp = head;
+        while(temp)
+        {
+            if(temp->random!=NULL)
+            {
+                temp->next->random = temp->random->next;                
+            }
+            temp = temp->next->next;
+        }
+        
+        temp = head;
+        
+        Node *ans = new Node(0);
+        Node *t = ans;
         while(head)
         {
-            Node* temp;
-            if(m.find(head)==m.end())
-            {
-                temp = new Node(head->val);
-                m[head] = temp;
-            }
-            else
-                temp = m[head];
-            if(head->next==NULL)
-                temp->next=NULL;
-            else if(m.find(head->next)==m.end())
-            {
-                Node* nex = new Node(head->next->val);
-                temp->next = nex;
-                m[head->next] = nex;
-            }else{
-                temp->next = m[head->next];
-            }
-            
-            if(head->random==NULL)
-                temp->random=NULL;
-            else if(m.find(head->random)==m.end())
-            {
-                Node* ran = new Node(head->random->val);
-                temp->random = ran;
-                m[head->random] = ran;
-            }else{
-                temp->random = m[head->random];
-            }
-            
+            t->next=head->next;
+            t = t->next;
+            head->next = t->next;
             head=head->next;
-            t->next = temp;
-            t = temp;
-            
         }
+        
         return ans->next;
     }
 };
