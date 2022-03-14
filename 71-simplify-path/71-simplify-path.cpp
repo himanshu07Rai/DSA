@@ -1,29 +1,26 @@
 class Solution {
 public:
     string simplifyPath(string path) {
-        
-        int n = path.length();
-        string ans;
+       int n = path.length();
         stack<string> st;
+        string ans;
         for(int i=0;i<n;i++)
         {
             if(path[i]=='/')
                 continue;
-            string directory_name;
+            string name="";
             while(i<n && path[i]!='/')
-            {
-                directory_name+=path[i++];
-            }
-            if(directory_name==".")
-                continue;
-            else if(directory_name=="..")
+                name+=path[i++];
+            if(name=="..")
             {
                 if(!st.empty())
                     st.pop();
             }
-            else{
-                st.push(directory_name);
-            }
+            else if(name==".")
+                continue;
+            else
+                st.push(name);
+            
         }
         
         while(!st.empty())
@@ -31,6 +28,7 @@ public:
             ans="/"+st.top()+ans;
             st.pop();
         }
+        
         if(ans.length()==0)
             return "/";
         return ans;
