@@ -2,8 +2,6 @@ class Solution {
 public:
     string minRemoveToMakeValid(string s) {
         int n = s.length();
-        stack<int> st;
-        unordered_map<int,bool>m;
         string ans="";
         int f = 0,b=0;
         
