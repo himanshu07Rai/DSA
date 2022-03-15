@@ -2,6 +2,7 @@ class Solution {
 public:
     string minRemoveToMakeValid(string s) {
         int n = s.length();
+        stack<int> st;
         unordered_map<int,bool>m;
         string ans="";
         int f = 0;
@@ -10,46 +11,25 @@ public:
         {
             if(s[i]=='(')
             {
-                f++;
+                st.push(i);
             }
             else if(s[i]==')') 
             {
-                if(f)
-                {
-                    f--;
-                }else{
-                    m[i] = true;
-                }
+                if(st.empty())
+                    s[i] = '#';
+                else st.pop();
                 
-            }
-            else {
-                continue;
             }
         }
-        f=0;
-        for(int i=n-1;i>=0;i--)
+        
+        while(!st.empty())
         {
-            if(s[i]==')')
-            {
-                f++;
-            }
-            else if(s[i]=='(') 
-            {
-                if(f)
-                {
-                    f--;
-                }else{
-                    m[i] = true;
-                }
-                
-            }
-            else {
-                continue;
-            }
+            s[st.top()]='#';
+            st.pop();
         }
         for(int i=0;i<n;i++)
         {
-            if(m.find(i)==m.end())
+            if(s[i]!='#')
                 ans+=s[i];
         }
         
