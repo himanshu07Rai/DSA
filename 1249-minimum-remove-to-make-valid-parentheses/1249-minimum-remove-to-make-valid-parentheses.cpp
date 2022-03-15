@@ -5,7 +5,7 @@ public:
         stack<int> st;
         unordered_map<int,bool>m;
         string ans="";
-        int f = 0;
+        int f = 0,b=0;
         
         for(int i=0;i<n;i++)
         {
@@ -20,20 +20,18 @@ public:
                 else s[i]='#';
                 
             }
-        }
-        
-        f=0;
-        for(int i=n-1;i>=0;i--)
-        {
-            if(s[i]==')')
+            
+            int j = n-1-i;
+            
+            if(s[j]==')')
             {
-                f++;
+                b++;
             }
-            else if(s[i]=='(') 
+            else if(s[j]=='(') 
             {
-                if(f)
-                    f--;
-                else s[i]='#';
+                if(b)
+                    b--;
+                else s[j]='#';
                 
             }
         }
