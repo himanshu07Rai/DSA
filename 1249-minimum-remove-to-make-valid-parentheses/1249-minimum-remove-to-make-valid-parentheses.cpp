@@ -11,22 +11,33 @@ public:
         {
             if(s[i]=='(')
             {
-                st.push(i);
+                f++;
             }
             else if(s[i]==')') 
             {
-                if(st.empty())
-                    s[i] = '#';
-                else st.pop();
+                if(f)
+                    f--;
+                else s[i]='#';
                 
             }
         }
         
-        while(!st.empty())
+        f=0;
+        for(int i=n-1;i>=0;i--)
         {
-            s[st.top()]='#';
-            st.pop();
+            if(s[i]==')')
+            {
+                f++;
+            }
+            else if(s[i]=='(') 
+            {
+                if(f)
+                    f--;
+                else s[i]='#';
+                
+            }
         }
+        
         for(int i=0;i<n;i++)
         {
             if(s[i]!='#')
