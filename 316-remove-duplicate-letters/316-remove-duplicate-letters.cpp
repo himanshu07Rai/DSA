@@ -24,12 +24,13 @@ public:
         
         while(!st.empty())
         {
-            ans+=st.top()+'a';
+            char c = st.top()+'a';
+            ans=c+ans;
             st.pop();
         }
             
         
-        reverse(ans.begin(),ans.end());
+        // reverse(ans.begin(),ans.end());
         return ans;
         
     }
