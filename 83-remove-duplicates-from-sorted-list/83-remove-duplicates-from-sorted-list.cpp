@@ -11,22 +11,16 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        if(!head || !head->next)
-            return head;
-        ListNode *p = head,*a = head;
-        head = head->next;
-        while(head)
-        {
-            cout<<p->val<<" "<<head->val<<"\n";
-            if(head->val==p->val)
-            {
-                p->next=head->next;
+        ListNode* curr = head;
+        ListNode* del = head;
+        while(curr){
+            while(curr->next &&curr->val == curr->next->val){
+                del = curr->next;
+                curr->next = curr->next->next;
+                delete del; 
             }
-            else{
-                p = p->next;
-            }            
-            head = head->next;
+             curr = curr->next;
         }
-        return a;
+        return head;
     }
 };
