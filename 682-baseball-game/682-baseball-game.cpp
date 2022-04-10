@@ -30,7 +30,7 @@ public:
                 stk.push(stoi(i)); //stoi() to convert string into integer 
             }
         }
-        while(stk.size() != 0)
+        while(!stk.empty())
         {
             ans += stk.top();
             stk.pop();
