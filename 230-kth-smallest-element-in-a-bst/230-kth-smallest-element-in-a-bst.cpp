@@ -16,9 +16,10 @@ public:
         if(!root)
             return ;        
         check(root->left,v,k);
-        v.push_back(root->val);
         if(v.size()==k)
             return;
+        v.push_back(root->val);
+        
         check(root->right,v,k);
     }
     int kthSmallest(TreeNode* root, int k) {
