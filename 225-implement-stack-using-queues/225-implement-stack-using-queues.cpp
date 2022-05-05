@@ -7,20 +7,23 @@ public:
     
     void push(int x) {
         q.push(x);
-		for(int i=0;i<q.size()-1;++i){
-			q.push(q.front());
-			q.pop();
-		}
     }
     
     int pop() {
-        int a = q.front();
+        int len = q.size();
+        for(int i = 0; i < len - 1; i++) {
+            int tmp = q.front();
+            q.pop();
+            q.push(tmp);
+        }
+        int res = q.front();
         q.pop();
-        return a;                            
+
+        return res;                            
     }
     
     int top() {
-        return q.front();
+        return q.back();
     }
     
     bool empty() {
