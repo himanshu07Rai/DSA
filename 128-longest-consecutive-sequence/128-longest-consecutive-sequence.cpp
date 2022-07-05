@@ -7,16 +7,16 @@ public:
             s.insert(i);
         }
         int longestStreak = 0;
-        for(int i:s)
+        for(int num:s)
         {
-            if(s.find(i-1)==s.end())
+            if(s.find(num-1)==s.end())
             {
                 int currentStreak = 1;
-                int j=i;
-                while(s.find(j+1)!=s.end())
+                int currentNum=num;
+                while(s.find(currentNum+1)!=s.end())
                 {
                     currentStreak++;
-                    j++;
+                    currentNum++;
                 }
                 longestStreak = max(longestStreak,currentStreak);                    
             }
