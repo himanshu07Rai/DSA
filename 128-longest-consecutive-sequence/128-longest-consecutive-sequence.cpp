@@ -7,7 +7,7 @@ public:
             s.insert(i);
         }
         int longestStreak = 0;
-        for(int i:nums)
+        for(int i:s)
         {
             if(s.find(i-1)==s.end())
             {
