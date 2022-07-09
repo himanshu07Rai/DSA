@@ -14,8 +14,7 @@ public:
             return;
         }
         solve(start+1,arr,CurrSum,ans,N);
-        CurrSum+=arr[start];
-        solve(start+1,arr,CurrSum,ans,N);
+        solve(start+1,arr,CurrSum+arr[start],ans,N);
         CurrSum-=arr[start];
     }
     vector<int> subsetSums(vector<int> arr, int N)
