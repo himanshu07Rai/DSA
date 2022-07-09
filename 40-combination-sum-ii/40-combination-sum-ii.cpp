@@ -10,8 +10,8 @@ public:
         }
         for(int i=start;i<candidates.size();i++)
         {
-            if(candidates[i]>target)break;
             if(i>start && candidates[i]==candidates[i-1]) continue;
+            if(candidates[i]>target)break;
             curr.push_back(candidates[i]);
             generate(candidates,i+1,curr,target-candidates[i],ans);
             curr.pop_back();
