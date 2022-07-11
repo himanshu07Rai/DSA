@@ -20,18 +20,18 @@ public:
         while(!q.empty())
         {
             int n = q.size();
-            vector<int> temp;
+            vector<int> currentLevel;
             while(n--)
             {
                 TreeNode* curr = q.front();
                 q.pop();
-                temp.push_back(curr->val);
+                currentLevel.push_back(curr->val);
                 if(curr->left)
                     q.push(curr->left);
                 if(curr->right)
                     q.push(curr->right);
             }
-            ans.push_back(temp);
+            ans.push_back(currentLevel);
             
         }
         return ans;
