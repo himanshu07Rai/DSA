@@ -11,19 +11,19 @@
  */
 class Solution {
 public:
-    void solve(TreeNode* root,int num,vector<int>&ans)
+    void solve(TreeNode* root,int level,vector<int>&ans)
     {
         if(!root)
             return;
-        if(num==ans.size())
+        if(level==ans.size())
             ans.push_back(root->val);
-        solve(root->right,num+1,ans);
-        solve(root->left,num+1,ans);
+        solve(root->right,level+1,ans);
+        solve(root->left,level+1,ans);
     }
     vector<int> rightSideView(TreeNode* root) {
         vector<int>ans;
-        int num = 0;
-        solve(root,num,ans);
+        int level = 0;
+        solve(root,level,ans);
         return ans;
     }
 };
