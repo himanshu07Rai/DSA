@@ -2,16 +2,17 @@ class Solution {
 public:
     int solve(vector<int>& nums,int l) {
         int n = nums.size();
-        vector<int> dp(n);
-        dp[0] = 0;
-        dp[1] = nums[l];
+        int x = 0;
+        int y = nums[l];
         for(int i=2;i<n;i++)
         {
-            int pick = nums[l+i-1]+dp[i-2];
-            int notPick = dp[i-1];
-            dp[i] = max(pick,notPick);
+            int pick = nums[l+i-1]+x;
+            int notPick = y;
+            int z = max(pick,notPick);
+            x = y;
+            y = z;
         }
-        return dp[n-1];
+        return y;
     }
     int rob(vector<int>& nums) {
         int n = nums.size();
