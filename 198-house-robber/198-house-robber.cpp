@@ -13,9 +13,8 @@ public:
         return dp[n]=max(pick,notPick);
     }
     int rob(vector<int>& nums) {
-        int n = nums.size();  
-        vector<int>dp(n+1,0);
-        int x = dp[0];
+        int n = nums.size(); 
+        int x = 0;
         int y = nums[0],z;
         for(int i=2;i<=n;i++)
         {
