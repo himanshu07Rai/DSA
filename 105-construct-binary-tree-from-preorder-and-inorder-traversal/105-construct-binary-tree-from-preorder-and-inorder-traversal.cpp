@@ -1,13 +1,13 @@
 class Solution {
 public:
-   TreeNode* helper(vector<int>& preorder,int low,int high,int& i,unordered_map<int,int>& um){
+   TreeNode* helper(vector<int>& preorder,int low,int high,int &r,unordered_map<int,int>& um){
         if(low>high)
             return NULL;
-        int loc = um[preorder[i]];
-        TreeNode *temp= new TreeNode(preorder[i]);
-        i++;
-        temp->left=helper(preorder,low,loc-1,i,um); 
-        temp->right=helper(preorder,loc+1,high,i,um);
+        int loc = um[preorder[r]];
+        TreeNode *temp= new TreeNode(preorder[r]);
+        r++;
+        temp->left=helper(preorder,low,loc-1,r,um); 
+        temp->right=helper(preorder,loc+1,high,r,um);
         return temp;
     }
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
