@@ -24,13 +24,14 @@ public:
         int loc = um[postorder[i]];
         TreeNode *temp= new TreeNode(postorder[i]);
         i--;
+        
         temp->right=helper(postorder,loc+1,high,i,um); 
         temp->left=helper(postorder,low,loc-1,i,um);
+        
         return temp;
         
     }
     TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
-        // sort(postorder.begin(),postorder.end());
         int n = inorder.size();
         unordered_map<int,int> um;
         
