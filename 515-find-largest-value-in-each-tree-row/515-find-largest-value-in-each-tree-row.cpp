@@ -17,21 +17,27 @@ public:
         if(!root)
             return ans;
         q.push(root);
+        q.push(NULL);
+        int val = INT_MIN;
         while(!q.empty())
         {
-            int n = q.size();
-            int Max = INT_MIN;
-            for(int i=0;i<n;i++)
+            auto f = q.front();
+            q.pop();
+            if(f)
             {
-                auto f = q.front();
-                q.pop();
+                val = max(val,f->val);
                 if(f->left)
                     q.push(f->left);
                 if(f->right)
                     q.push(f->right);
-                Max = max(Max,f->val);
+            }else{
+                ans.push_back(val);
+                if(!q.empty())
+                {
+                    val = INT_MIN;
+                    q.push(NULL);
+                }
             }
-            ans.push_back(Max);
         }
         return ans;
     }
