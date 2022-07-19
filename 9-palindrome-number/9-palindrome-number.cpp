@@ -12,7 +12,9 @@ public:
         return res;
     }
     bool isPalindrome(int x) {
+        if(x<0 || (x!=0 && x%10==0))
+            return false;
         int res =  getReverse(x);
-        return x>=0 && x ==res;
+        return x==res;
     }
 };
