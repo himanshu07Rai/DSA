@@ -1,21 +1,18 @@
 class Solution {
 public:
-    bool isPalindrome(int x) {
-        if(x<0)
-            return false;
-        long long n = 0;
+    int getReverse(int &x)
+    {
         int t = x;
+        long long res = 0;
         while(t)
         {
-            n=n*10+t%10;
-            // cout<<n<<" "<<x<<"\n";
-            // if(n==x)
-            //     return true;
-            // if(n>INT_MAX/10 || n<INT_MIN/10)
-            //     return false;
-            t=t/10;
+            res = res*10+t%10;
+            t/=10;
         }
-        
-        return n==x;
+        return res;
+    }
+    bool isPalindrome(int x) {
+        int res =  getReverse(x);
+        return x>=0 && x ==res;
     }
 };
