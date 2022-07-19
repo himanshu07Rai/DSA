@@ -16,18 +16,20 @@ public:
         int n = nums.size(); 
         int x = 0;
         int y = nums[0],z;
-        for(int i=2;i<=n;i++)
-        {
-            int pick = nums[i-1];
-            if(i>1)
-            {
-                pick+=x;
-            }
-            int notPick = y;
-            z = max(pick,notPick);
-            x=y;
-            y=z;
-        }
-        return y;
+        vector<int> dp(n+1,-1);
+        return solve(n,nums,dp);
+        // for(int i=2;i<=n;i++)
+        // {
+        //     int pick = nums[i-1];
+        //     if(i>1)
+        //     {
+        //         pick+=x;
+        //     }
+        //     int notPick = y;
+        //     z = max(pick,notPick);
+        //     x=y;
+        //     y=z;
+        // }
+        // return y;
     }
 };
