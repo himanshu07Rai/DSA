@@ -20,7 +20,7 @@ public:
                     e--;
                 else
                 {
-                    cout<<"nums[j] "<<nums[j]<<",nums[s] "<<nums[s]<<",nums[e] "<<nums[e]<<"\n";
+                    // cout<<"nums[j] "<<nums[j]<<",nums[s] "<<nums[s]<<",nums[e] "<<nums[e]<<"\n";
                     ans.push_back({nums[j],nums[s],nums[e]});
 
                     int val=nums[s];
