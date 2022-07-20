@@ -10,6 +10,7 @@ public:
         //very imp to remove duplicates
         if(i>0 && nums[i]==nums[i-1])
             continue;
+        int target_3 = target-nums[i];
         for(int j=i+1;j<n;j++)
         {
             //very imp to remove duplicates
@@ -17,14 +18,14 @@ public:
             continue;
             
             //overflowing int,that's why *1L(typecasting to long)
-            long long tar=target-nums[i]*1L-nums[j];
+            long long target_2 = (long long)target_3-nums[j];
             
             int s=j+1,e=n-1;
             while(s<e)
             {
-                if(nums[s]+nums[e] < tar)
+                if(nums[s]+nums[e] < target_2)
                     s++;
-                else if(nums[s]+nums[e] > tar)
+                else if(nums[s]+nums[e] > target_2)
                     e--;
                 else
                 {
