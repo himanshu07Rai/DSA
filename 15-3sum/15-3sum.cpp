@@ -4,34 +4,33 @@ public:
         vector<vector<int>> ans;
         sort(nums.begin(),nums.end());
         int n=nums.size();
-        for(int j=0;j<n;j++)
+        for(int i=0;i<n;i++)
         {
-            //very imp to remove duplicates
-            if(j>0 && nums[j]==nums[j-1])
+            if(i>0  && nums[i]==nums[i-1])
                 continue;
-            
-
-            int s=j+1,e=n-1;
-            while(s<e)
+                
+            int target_2 = -nums[i];
+            int l = i+1,r=n-1;
+            while(l<r)
             {
-                if(nums[s]+nums[e]+nums[j] < 0)
-                    s++;
-                else if(nums[s]+nums[e]+nums[j] > 0)
-                    e--;
+                if(nums[l]+nums[r] < target_2)
+                    l++;
+                else if(nums[l]+nums[r] > target_2)
+                    r--;
                 else
                 {
-                    // cout<<"nums[j] "<<nums[j]<<",nums[s] "<<nums[s]<<",nums[e] "<<nums[e]<<"\n";
-                    ans.push_back({nums[j],nums[s],nums[e]});
-
-                    int val=nums[s];
-                    while(s<e && nums[s]==val)
-                        s++;
-
-                    val=nums[e];
-                    while(e>s && nums[e]==val)
-                        e--;
+                    ans.push_back({nums[i],nums[l],nums[r]});
+                    
+                    int val=nums[l];
+                    while(l<r && nums[l]==val)
+                        l++;
+                    
+                    val=nums[r];
+                    while(l<r && nums[r]==val)
+                        r--;
                 }
             }
+            
         }
         return ans;
     }
