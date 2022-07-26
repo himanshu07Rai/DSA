@@ -14,15 +14,11 @@ public:
         {
             for(int j=0;j<=amount;j++)
             {
-                int notTake = prev[j];
-                int take = 1e9;
-                if(coins[i]<=j)
-                {
-                    take = 1+curr[j-coins[i]];
-                }
-                curr[j] = min(take,notTake);
+                int notTake=prev[j];
+                int take=1e9;
+                if(coins[i]<=j)take=1+prev[j-coins[i]];
+                prev[j]=min(take,notTake);
             }
-            prev = curr;
         }
         int ans = prev[amount];
         
