@@ -18,7 +18,7 @@ public:
     }
     int change(int amount, vector<int>& coins) {
         int n = coins.size();
-        vector<int>prev(amount+1,0),curr(amount+1,0);
+        vector<int>prev(amount+1,0);
         for(int j=0;j<=amount;j++)
         {
             prev[j] = (j%coins[0]==0);
