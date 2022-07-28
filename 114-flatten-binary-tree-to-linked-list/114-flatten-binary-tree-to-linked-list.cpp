@@ -10,34 +10,30 @@
  * };
  */
 class Solution {
-public:
-    void dfs(TreeNode* root,TreeNode* dummy)
-    {
-        if(!root)
-            return;
-        TreeNode *temp = new TreeNode(root->val);
-        dummy->right = temp;
-        dummy->left=NULL;
-        dummy = dummy->right;
-        dfs(root->left,dummy);
-        dfs(root->right,dummy);
-    }
+public: 
+    TreeNode *prev = NULL;
     void flatten(TreeNode* root) {
        if(!root)
            return;
-        stack<TreeNode*> st;
-        st.push(root);
-        while(!st.empty())
-        {
-            TreeNode *curr = st.top();
-            st.pop();
-            if(curr->right)
-                st.push(curr->right);
-            if(curr->left)
-                st.push(curr->left);
-            if(!st.empty())
-                curr->right = st.top();
-            curr->left = NULL;
-        }
+        flatten(root->right);
+        flatten(root->left);
+        root->left = NULL;
+        root->right = prev;
+        prev = root;
+        
+        // stack<TreeNode*> st;
+        // st.push(root);
+        // while(!st.empty())
+        // {
+        //     TreeNode *curr = st.top();
+        //     st.pop();
+        //     if(curr->right)
+        //         st.push(curr->right);
+        //     if(curr->left)
+        //         st.push(curr->left);
+        //     if(!st.empty())
+        //         curr->right = st.top();
+        //     curr->left = NULL;
+        // }
     }
 };
