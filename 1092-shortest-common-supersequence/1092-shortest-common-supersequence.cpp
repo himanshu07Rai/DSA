@@ -19,24 +19,19 @@ public:
         string ans;
         while(i>0 && j>0)
         {
-            
             if(str1[i-1]==str2[j-1])
             {
                 ans.push_back(str1[i-1]);
                 i--,j--;
             }
-            else
+            else if(dp[i][j-1]>dp[i-1][j])
             {
-                if(dp[i-1][j]>dp[i][j-1])
-                {
-                    ans.push_back(str1[i-1]);
-                    i--;
-                }
-                    
-                else {
-                    ans.push_back(str2[j-1]);
-                    j--;
-                }
+                ans.push_back(str2[j-1]);
+                j--;
+            }
+            else{
+                ans.push_back(str1[i-1]);
+                i--;
             }
         }
         while(i-->0)
