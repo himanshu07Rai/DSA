@@ -27,7 +27,21 @@ public:
         return dp[i]=res;
     }
     int minCut(string s) {
-        vector<int>dp(s.length(),-1);
-        return solve(0,s.length(),s,dp)-1;
+        vector<int>dp(s.length()+1,0);
+        int n = s.length();
+        for(int i=n-1;i>=0;i--)
+        {
+            int res = INT_MAX;
+            for(int j=i;j<n;j++)
+            {
+                if(isPalindromic(s,i,j))
+                {
+                    int cost = 1+dp[j+1];
+                    res = min(cost,res);
+                }
+            }
+            dp[i]=res;
+        }
+        return dp[0]-1;
     }
 };
