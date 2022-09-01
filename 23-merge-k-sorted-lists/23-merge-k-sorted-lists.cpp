@@ -22,12 +22,12 @@ public:
             if(lists[i])
                 pq.push({lists[i]->val,lists[i]});
         }
-        vector<int>re;
+        // vector<int>re;
         
         while(!pq.empty())
         {
             auto t = pq.top();
-            re.push_back(t.first);
+            // re.push_back(t.first);
             pq.pop();
             ListNode* a = new ListNode(t.first);
             temp->next = a;
@@ -37,8 +37,8 @@ public:
                 pq.push({t.second->next->val,t.second->next});
                 
         }
-        for(int i:re)
-            cout<<i<<" ";
+        // for(int i:re)
+        //     cout<<i<<" ";
         return dummy->next;
     }
 };
