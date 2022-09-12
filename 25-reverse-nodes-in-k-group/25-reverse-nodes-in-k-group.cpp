@@ -22,15 +22,26 @@ public:
     }
     ListNode* reverseKGroup(ListNode* head, int k) {
         if(!head ||  !head->next || k==1)return head;
-        ListNode *s = head,*e = head;
-        int t = k-1;
-        while(t--){
-            e = e->next;
-            if(!e)return head;
+        ListNode *dummy = new ListNode(0);
+        dummy->next = head;
+        ListNode *beforeStart = dummy,*e = head;
+        int i=0;
+        while(e)
+        {
+            i++;
+            if(i%k==0)
+            {
+                ListNode *s = beforeStart->next,*afterEnd = e->next;
+                reverse(s,e);
+                beforeStart->next = e;
+                s->next = afterEnd;
+                beforeStart = s;
+                e = afterEnd;
+            }else{
+                e=e->next;
+            }
         }
-        ListNode *nextHead = reverseKGroup(e->next,k);
-        reverse(s,e);
-        s->next = nextHead;
-        return e;
+        
+        return dummy->next;
     }
 };
