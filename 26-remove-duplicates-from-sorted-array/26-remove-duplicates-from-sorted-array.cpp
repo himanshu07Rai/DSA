@@ -5,12 +5,7 @@ public:
         int j=1;
         for(int i=1;i<n;i++)
         {
-            if(nums[i]==t)
-            {
-                continue;
-            }
-                
-            else{
+            if(nums[i]!=t){
                 t = nums[i];
                 swap(nums[i],nums[j]);
                 j++;
