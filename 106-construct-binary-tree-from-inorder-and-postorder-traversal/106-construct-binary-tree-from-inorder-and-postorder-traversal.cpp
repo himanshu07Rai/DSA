@@ -12,13 +12,7 @@
 class Solution {
 public:
     TreeNode* helper(vector<int>& postorder, int low,int high,int &i,unordered_map<int,int>& um) {
-        // if(low>high)return NULL;
-        // int loc = um[postorder[r]];
-        // TreeNode *temp = new TreeNode(postorder[r]);
-        // r++;
-        // temp->left = helper(postorder,low,loc-1,r,um);
-        // temp->right = helper(postorder,loc+1,high,r,um);
-        // return temp;
+
         if(low>high)
             return NULL;
         int loc = um[postorder[i]];
